@@ -51,13 +51,13 @@ const Discover = () => {
         </span>
       </div>
 
-      <div className="h-36 w-full">
+      <div className="h-[400px]   w-full">
         <div className="flex justify-between">
           <h1 className="text-slate-900 text-3xl font-semibold">My Playlist</h1>
 
           <span className="text-slate-400 text-sm leading-4">Show All</span>
         </div>
-        <div className="mt-2">
+        <div className="mt-2 h-64 scrollbar-hide overflow-y-auto">
           <div className="flex my-1  gap-16 ">
             <span className="text-sm w-1/6 text-slate-400 ">#</span>
             <span className="text-sm w-1/3 text-slate-400 ">Title</span>

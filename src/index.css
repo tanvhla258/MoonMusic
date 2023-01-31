@@ -27,6 +27,7 @@
   animation-delay: 1s;
 }
 
+
 .smooth-transition {
   transition: all 0.3s ease-in-out;
 }
