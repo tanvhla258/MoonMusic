@@ -17,12 +17,12 @@ const SongCard = ({ index, isPlaying, activeSong, song, data }) => {
   };
 
   return (
-    <div className="flex   relative my-2 gap-16 border-[1px] px-2 border-gray hover:bg-white hover:border-black  box-content smooth-transition">
+    <div className="flex  relative my-2 gap-16 border-[1px] px-2 border-gray hover:bg-white hover:border-black  box-content smooth-transition">
       <span className="w-1/6 text-slate-600 ">
         {index < 10 ? `0${index}` : index}
       </span>
-      <span className="w-1/3 text-slate-600 ">{song.title}</span>
-      <span className="w-1/2 text-slate-600 ">{song.subtitle}</span>
+      <span className="w-1/3 text-slate-600 truncate ">{song.title}</span>
+      <span className="w-1/2 text-slate-600 truncate ">{song.subtitle}</span>
 
       <PlayPause
         isPlaying={isPlaying}

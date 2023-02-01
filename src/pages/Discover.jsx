@@ -13,8 +13,8 @@ const Discover = () => {
   if (error) return <Error />;
 
   return (
-    <div className="flex flex-col font-mono ">
-      <div className="w-full flex justify-between items-center mt-4 mb-10 sm:flex-row">
+    <div className="flex  flex-col ">
+      <div className="w-full flex justify-between items-center mt-4 mb-5 sm:flex-row">
         <div className="w-full">
           <span className="text-slate-400 text-sm w-full">What's hot</span>
           <div className="flex justify-between items-end">
@@ -62,12 +62,13 @@ const Discover = () => {
 
           <span className="text-slate-400 text-sm leading-4">Show All</span>
         </div>
-        <div className="mt-2 h-64 scrollbar-hide overflow-y-auto">
-          <div className="flex my-1 px-2  gap-16 ">
+        <div className="relative mt-2 h-64 scrollbar-hide overflow-y-auto">
+          <div className="flex my-1 px-2  gap-16  ">
             <span className="text-sm w-1/6 text-slate-400 ">#</span>
             <span className="text-sm w-1/3 text-slate-400 ">Title</span>
             <span className="text-sm w-1/2 text-slate-400 ">Artist</span>
           </div>
+
           {data?.tracks.map((song, i) => {
             return (
               <SongCard

@@ -16,13 +16,12 @@ const App = () => {
   const { activeSong } = useSelector((state) => state.player);
 
   return (
-    <div className="relative flex">
+    <div className="relative flex font-mono ">
       <Sidebar />
-      <div className="flex-1 flex flex-col bg-gray">
+      <div className="flex-1  flex flex-col bg-gray">
         <Searchbar />
-
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
-          <div className="flex-1 h-fit pb-40">
+          <div className=" h-fit w-2/3  pb-40 ">
             <Routes>
               <Route path="/" element={<Discover />} />
               <Route path="/top-artists" element={<TopArtists />} />
