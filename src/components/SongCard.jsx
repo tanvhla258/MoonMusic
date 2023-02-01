@@ -4,15 +4,33 @@ import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { useGetSongDetailsQuery } from "../redux/services/shazamCore";
 
-const SongCard = ({ index, songKey, title, subtitle }) => {
+const SongCard = ({ index, isPlaying, activeSong, song, data }) => {
   //const { data, isFetching, error } = useGetSongDetailsQuery(songKey);
+  const dispatch = useDispatch();
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, data, index }));
+
+    dispatch(playPause(true));
+  };
+
   return (
-    <div className="flex my-2 gap-16 hover:bg-white  smooth-transition">
+    <div className="flex   relative my-2 gap-16 border-[1px] px-2 border-gray hover:bg-white hover:border-black  box-content smooth-transition">
       <span className="w-1/6 text-slate-600 ">
         {index < 10 ? `0${index}` : index}
       </span>
-      <span className="w-1/3 text-slate-600 ">{title}</span>
-      <span className="w-1/2 text-slate-600 ">{subtitle}</span>
+      <span className="w-1/3 text-slate-600 ">{song.title}</span>
+      <span className="w-1/2 text-slate-600 ">{song.subtitle}</span>
+
+      <PlayPause
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+        song={song}
+        handlePause={handlePauseClick}
+        handlePlay={handlePlayClick}
+      />
     </div>
   );
 };
