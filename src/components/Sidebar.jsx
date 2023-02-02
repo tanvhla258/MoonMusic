@@ -4,6 +4,8 @@ import { RiCloseLine } from "react-icons/ri";
 
 import { logo } from "../assets";
 import { NavLink } from "react-router-dom";
+import { MdMenuOpen } from "react-icons/md";
+import { GiMusicSpell } from "react-icons/gi";
 
 const NavLinks = ({ handleClick }) => (
   <div className="mt-4">
@@ -24,14 +26,20 @@ const NavLinks = ({ handleClick }) => (
 );
 const Sidebar = () => {
   return (
-    <div className=" w-1/5 h-100 pt-8 px-5">
+    <div className=" flex flex-col bg-white w-1/5 h-100 pt-8 px-5 gap-8">
       <div className="flex justify-between items-center">
         <div className=" flex gap-2">
           <span className="h-3 w-3 inline-block rounded-full bg-red"></span>
           <span className="h-3 w-3 inline-block rounded-full bg-yellow"></span>
           <span className="h-3 w-3 inline-block rounded-full bg-green"></span>
         </div>
-        <div>icon</div>
+        <MdMenuOpen size={22} color="gray" />
+      </div>
+      <div className="flex items-center gap-2">
+        <GiMusicSpell className=" text-[#EFB35F] " size={24} />
+        <span className="text-2xl ">
+          <span className="text-2xl text-[#EFB35F]">Moon</span>Music
+        </span>
       </div>
       <NavLinks />
     </div>

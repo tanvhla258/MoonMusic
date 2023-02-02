@@ -27,7 +27,7 @@ const Controls = ({
     />
     {currentSongs?.length && (
       <MdSkipPrevious
-        size={30}
+        size={24}
         color="black"
         className="cursor-pointer"
         onClick={handlePrevSong}
@@ -35,14 +35,14 @@ const Controls = ({
     )}
     {isPlaying ? (
       <BsFillPauseFill
-        size={45}
+        size={30}
         color="white"
         onClick={handlePlayPause}
         className="cursor-pointer p-2 bg-black rounded-full"
       />
     ) : (
       <BsFillPlayFill
-        size={45}
+        size={30}
         color="black"
         onClick={handlePlayPause}
         className="cursor-pointer"
@@ -50,7 +50,7 @@ const Controls = ({
     )}
     {currentSongs?.length && (
       <MdSkipNext
-        size={30}
+        size={24}
         color="black"
         className="cursor-pointer"
         onClick={handleNextSong}

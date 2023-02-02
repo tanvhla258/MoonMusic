@@ -3,6 +3,8 @@ import { Error, Loader, SongCard } from "../components";
 import { genres } from "../assets/constants";
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 import { useGetSongDetailsQuery } from "../redux/services/shazamCore";
+import { BiChevronRight } from "react-icons/bi";
+import { HiFire } from "react-icons/hi";
 import MusicPlayer from "../components/MusicPlayer/index";
 const Discover = () => {
   const dispatch = useDispatch();
@@ -16,10 +18,15 @@ const Discover = () => {
     <div className="flex  flex-col ">
       <div className="w-full flex justify-between items-center mt-4 mb-5 sm:flex-row">
         <div className="w-full">
-          <span className="text-slate-400 text-sm w-full">What's hot</span>
+          <span className="text-slate-400 text-sm w-full  flex gap-1 items-center">
+            What's hot
+            <HiFire className="text-red pb-1" size={20} />
+          </span>
           <div className="flex justify-between items-end">
             <h1 className="text-slate-900 text-3xl font-semibold">Trending</h1>
-            <span className="text-slate-400 text-sm leading-4">More</span>
+            <span className="text-slate-400 text-sm leading-4 items-center flex">
+              More <BiChevronRight className="inline-block" size={20} />
+            </span>
           </div>
         </div>
       </div>
@@ -31,14 +38,14 @@ const Discover = () => {
             'url("https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")',
         }}
       >
-        <div className="  w-full absolute bg-gradient-to-r from-slate-100 to-slate-300 rounded-2xl h-full opacity-50"></div>
+        <div className="  w-full absolute bg-gradient-to-r from-white rounded-2xl h-full "></div>
         <span className=" top-5 left-5 z-1 absolute text-slate-400 text-sm leading-4">
           Artist
         </span>
-        <h1 className="z-1 top-8 left-4  absolute text-slate-900 text-3xl font-semibold">
+        <h1 className="z-1 top-10 left-4  absolute text-slate-900 text-2xl font-semibold">
           On Top
         </h1>
-        <h1 className=" z-1 top-16 left-4  absolute text-slate-900 text-3xl font-semibold">
+        <h1 className=" z-1 top-[70px] left-4  absolute text-slate-900 text-2xl font-semibold">
           Of The World
         </h1>
         <button className="z-1 text-white font-semibold bottom-3 left-4 absolute bg-black border-2 border-black px-5 py-1 rounded-3xl">
@@ -58,11 +65,13 @@ const Discover = () => {
 
       <div className=" w-full">
         <div className="flex justify-between">
-          <h1 className="text-slate-900 text-3xl font-semibold">My Playlist</h1>
+          <h1 className="text-slate-900 text-2xl font-semibold">My Playlist</h1>
 
-          <span className="text-slate-400 text-sm leading-4">Show All</span>
+          <span className="text-slate-400 text-sm leading-4 flex items-center">
+            Show All <BiChevronRight className="inline-block" size={20} />
+          </span>
         </div>
-        <div className="relative mt-2 h-64 scrollbar-hide overflow-y-auto">
+        <div className="relative mt-2 h-48 scrollbar-hide overflow-y-scroll">
           <div className="flex my-1 px-2  gap-16  ">
             <span className="text-sm w-1/6 text-slate-400 ">#</span>
             <span className="text-sm w-1/3 text-slate-400 ">Title</span>
