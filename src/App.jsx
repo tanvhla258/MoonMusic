@@ -18,10 +18,10 @@ const App = () => {
   return (
     <div className="relative flex font-mono ">
       <Sidebar />
-      <div className="flex-1  flex flex-col bg-gray">
+      <div className="flex-1 w-4/5 flex flex-col bg-gray">
         <Searchbar />
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
-          <div className=" h-fit w-full  pb-40 ">
+          <div className=" h-fit w-full ">
             <Routes>
               <Route path="/" element={<Discover />} />
               <Route path="/top-artists" element={<TopArtists />} />

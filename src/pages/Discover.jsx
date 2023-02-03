@@ -12,12 +12,17 @@ import { useState } from "react";
 const Discover = () => {
   const dispatch = useDispatch();
   const [listid, setlistid] = useState("genre-global-chart-14");
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
+
+  let { activeSong, isPlaying } = useSelector((state) => state.player);
+  // const { setActiveSong } = useSelector(
+  //   (state) => state.reducers.setActiveSong
+  // );
+
   function getList(ListId) {
     setlistid(ListId);
   }
   const { data, isFetching, error } = useGetTopChartsQuery(listid);
-
+  console.log(data);
   if (isFetching) return <Loader></Loader>;
   if (error) return <Error />;
 
@@ -44,8 +49,7 @@ const Discover = () => {
         <div
           className=" relative rounded-2xl h-40 w-full mb-4 bg-no-repeat bg-cover bg-bottom"
           style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")',
+            backgroundImage: `url("${data?.tracks[8].images.background}")`,
           }}
         >
           <div className="  w-full absolute bg-gradient-to-r from-white rounded-2xl h-full "></div>
