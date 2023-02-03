@@ -18,7 +18,7 @@ const NavLinks = ({ handleClick }) => (
           onClick={() => handleClick && handleClick()}
         >
           <item.icon className="text-slate-700 mx-4" />
-          {item.name}
+          <span className="hidden md:inline-block"> {item.name}</span>
         </NavLink>
       );
     })}

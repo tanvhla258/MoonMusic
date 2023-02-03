@@ -8,6 +8,12 @@ import { HiFire } from "react-icons/hi";
 import MusicPlayer from "../components/MusicPlayer/index";
 import TopPlay from "../components/TopPlay";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { FreeMode, Scrollbar, Mousewheel } from "swiper";
+
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
 
 const Discover = () => {
   const dispatch = useDispatch();
@@ -47,7 +53,7 @@ const Discover = () => {
         </div>
 
         <div
-          className=" relative rounded-2xl h-40 w-full mb-4 bg-no-repeat bg-cover bg-bottom"
+          className=" relative  rounded-2xl h-40 w-full mb-4 bg-no-repeat bg-cover bg-bottom"
           style={{
             backgroundImage: `url("${data?.tracks[8].images.background}")`,
           }}
@@ -87,24 +93,26 @@ const Discover = () => {
               Show All <BiChevronRight className="inline-block" size={20} />
             </span>
           </div>
-          <div className="relative mt-2 h-48 scrollbar-hide overflow-y-scroll">
+          <div className="relative  mt-2 h-48 ">
             <div className="flex my-1 px-2  gap-16  ">
               <span className="text-sm w-1/6 text-slate-400 ">#</span>
               <span className="text-sm w-1/3 text-slate-400 ">Title</span>
               <span className="text-sm w-1/2 text-slate-400 ">Artist</span>
             </div>
-            {data?.tracks.map((song, i) => {
-              return (
-                <SongCard
-                  song={song}
-                  index={i}
-                  key={i}
-                  activeSong={activeSong}
-                  isPlaying={isPlaying}
-                  data={data?.tracks}
-                ></SongCard>
-              );
-            })}
+            <div className="overflow-y-auto	h-[180px] hide-scrollbar overflow-x-hidden">
+              {data?.tracks.map((song, i) => {
+                return (
+                  <SongCard
+                    song={song}
+                    index={i}
+                    key={i}
+                    activeSong={activeSong}
+                    isPlaying={isPlaying}
+                    data={data?.tracks}
+                  ></SongCard>
+                );
+              })}
+            </div>
           </div>
         </div>
         {/* <MusicPlayer></MusicPlayer> */}
