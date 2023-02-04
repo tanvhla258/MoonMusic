@@ -14,7 +14,7 @@ const NavLinks = ({ handleClick }) => (
         <NavLink
           key={item.name}
           to={item.to}
-          className="flex flex-row text-slate-700 py-4 text-base items-center active:bg-black rounded-2xl"
+          className="flex flex-row text-slate-700 py-4 text-base smooth-transition  hover:scale-105 items-center active:bg-black rounded-2xl"
           onClick={() => handleClick && handleClick()}
         >
           <item.icon className="text-slate-700 mx-4" />
