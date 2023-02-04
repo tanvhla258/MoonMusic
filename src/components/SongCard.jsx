@@ -16,7 +16,7 @@ const SongCard = ({ index, isPlaying, activeSong, song, data }) => {
   };
 
   return (
-    <div className="flex  relative my-2 gap-16 px-2 w-full hover:cursor-pointer py-1 hover:bg-white rounded-2xl hover:drop-shadow-md smooth-transition">
+    <div className="flex  relative my-2 gap-16 px-2 w-full hover:cursor-pointer py-1 hover:bg-white rounded-md hover:drop-shadow-md smooth-transition">
       <span className="w-1/6 text-slate-600 ">
         {index < 10 ? `0${index}` : index}
       </span>

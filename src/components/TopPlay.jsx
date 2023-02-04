@@ -13,6 +13,7 @@ import {
   FcLike,
   FcGlobe,
 } from "react-icons/fc";
+import { FiPlusSquare } from "react-icons/fi";
 const shortcutIcons = [
   <FcMusic />,
   <FcGlobe />,
@@ -23,33 +24,35 @@ const shortcutIcons = [
 ];
 
 const TopPlay = ({ getList }) => {
-  const { data, isFetching, error } = useGetChartListsQuery();
+  const { data: artData, isFetching: isFetchingArt } =
+    useGetArtistQuery(73406786);
 
-  if (isFetching) return <Loader />;
-  console.log(data);
+  if (isFetchingArt) return <Loader />;
+  console.log(artData);
+  const art = artData?.data[0];
+
   return (
     <div className="flex px-6 gap-6 flex-col">
-      <h1 className="text-slate-900 text-2xl font-semibold">Shortcuts</h1>
-      <div className="flex  gap-3 h-40 overflow-scroll hide-scrollbar flex-wrap">
-        {data?.global.genres.slice(10, 16).map((genres, i) => {
-          return (
-            <div
-              className="px-4 hover:cursor-pointer smooth-transition hover:drop-shadow-md py-2 gap-1 w-30  h-10 font-medium flex items-center  truncate rounded-3xl bg-white cursor-pointer"
-              onClick={() => {
-                getList(genres.listid);
-              }}
-              key={i}
-            >
-              {shortcutIcons[i]}
-              {genres.name}
-            </div>
-          );
-        })}
-      </div>
-
       <h1 className="text-slate-900 text-2xl font-semibold">Fav Artists</h1>
       <div className="">
-        <Artist />
+        <div className="flex hover:cursor-pointer smooth-transition hover:drop-shadow-xl  flex-col items-center  w-[240px] p-4 h-48  rounded-2xl bg-white">
+          <div className="h-[70%]">
+            <img
+              src={art?.attributes?.artwork.url
+                .replace("{w}", "200")
+                .replace("{h}", "180")}
+              alt=""
+              className="rounded-2xl object-cover w-[200px] h-[110px]"
+            />
+          </div>
+          <div className="w-full h-[30%] flex  items-center justify-between ">
+            <div className="flex flex-col">
+              <span className="font-semibold">{art?.attributes?.name}</span>
+              <span className="text-slate-400 text-sm">Korean</span>
+            </div>
+            <FiPlusSquare size={20} />
+          </div>
+        </div>
       </div>
     </div>
   );
