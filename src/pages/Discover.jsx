@@ -75,9 +75,6 @@ const Discover = () => {
           </span>
           <div className="flex justify-between items-end">
             <h1 className="text-slate-900 text-3xl font-semibold">Trending</h1>
-            <span className="text-slate-400 text-sm leading-4 items-center flex">
-              More <BiChevronRight className="inline-block" size={20} />
-            </span>
           </div>
         </div>
       </div>

@@ -40,13 +40,14 @@ const TopChartsCard = ({ song, i }) => {
 const TopPlay = ({ getList }) => {
   const dispatch = useDispatch();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const { data: topPlayData } = useGetTopChartsQuery(
+  const { data: topPlayData, isFetchingTopPlay } = useGetTopChartsQuery(
     "genre-country-chart-DE-1"
   );
+  //Fetch artist
   const { data: artData, isFetching: isFetchingArt } =
     useGetArtistQuery(73406786);
-  if (isFetchingArt) return <Loader />;
-  const divRef = useRef(null);
+
+  if (isFetchingArt || isFetchingTopPlay) return <Loader />;
 
   const handlePauseClick = () => {
     dispatch(playPause(false));
@@ -57,8 +58,7 @@ const TopPlay = ({ getList }) => {
   };
 
   console.log(topPlayData);
-  const topPlays = topPlayData?.tracks.slice(0, 5);
-  //Fetch artist
+  let topPlays = topPlayData?.tracks.slice(0, 5);
 
   console.log(artData);
 
@@ -84,7 +84,7 @@ const TopPlay = ({ getList }) => {
         <div className="flex hover:cursor-pointer smooth-transition hover:drop-shadow-xl  flex-col items-center  w-[240px] p-4 h-48  rounded-2xl bg-white">
           <div className="h-[70%]">
             <img
-              src={art?.attributes?.artwork.url
+              src={art?.attributes?.artwork?.url
                 .replace("{w}", "200")
                 .replace("{h}", "180")}
               alt=""
