@@ -114,7 +114,7 @@ const Discover = () => {
           </span>
         </div>
         <div className="flex justify-end pr-2 w-[45%] gap-3 h-40 overflow-scroll hide-scrollbar flex-wrap">
-          {chartData?.global.genres.map((genres, i) => {
+          {chartData?.global.genres.slice(2).map((genres, i) => {
             return (
               <div
                 className="px-4 hover:cursor-pointer smooth-transition hover:drop-shadow-md py-2 gap-1 w-30  h-10 font-medium flex items-center  truncate rounded-3xl bg-white cursor-pointer"
