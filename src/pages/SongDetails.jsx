@@ -18,7 +18,7 @@ const SongDetails = () => {
       <div className="flex flex-col">
         <DetailsHeader artistId="" songData={songData?.data[0]} />
 
-        <div className="mb-10">
+        <div className="mb-10 mt-16">
           <h2 className="font-semibold text-lg">Lyrics:</h2>
           <p>Sorry! No lyrics found</p>
         </div>
