@@ -135,11 +135,14 @@ const Discover = () => {
             Show All <BiChevronRight className="inline-block" size={20} />
           </span>
         </div>
-        <div className="relative  mt-2 h-48 ">
-          <div className="flex my-1 px-2  gap-16  ">
-            <span className="text-sm w-1/6 text-slate-400 ">#</span>
-            <span className="text-sm w-1/3 text-slate-400 ">Title</span>
-            <span className="text-sm w-1/2 text-slate-400 ">Artist</span>
+        <div className="w-full">
+          <div className="flex w-full items-center">
+            <div className="flex w-10/12  relative my-2 gap-8 px-2 pt-1 font-bold text">
+              <span className="w-2/12 text-slate-600 ">#</span>
+              <span className="w-4/12 text-slate-600 truncate ">Title</span>
+              <span className="w-1/2 text-slate-600 truncate ">Artist</span>
+            </div>
+            <span className="w-2/12"></span>
           </div>
           <div className="overflow-y-auto	h-[180px] hide-scrollbar overflow-x-hidden">
             {data?.tracks.map((song, i) => {
