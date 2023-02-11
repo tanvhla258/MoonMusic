@@ -19,9 +19,11 @@ const App = () => {
     <div className="relative flex font-mono ">
       <Sidebar />
       <div className="flex-1  flex flex-col bg-gray">
-        <Searchbar />
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
           <div className=" h-fit w-full  ">
+            <div className="w-full">
+              <Searchbar />
+            </div>
             <Routes>
               <Route path="/" element={<Discover />} />
               <Route path="/top-artists" element={<TopArtists />} />
@@ -37,11 +39,11 @@ const App = () => {
           </div>
         </div>
 
-        {/* {activeSong?.title && (
-          <div className="absolute w-full h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10">
+        {activeSong?.title && (
+          <div className="absolute w-full h-28 bottom-0 left-0 right-0 mt-7 drop-shadow-md  flex animate-slideup bg-white backdrop-blur-lg rounded-3xl">
             <MusicPlayer />
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );

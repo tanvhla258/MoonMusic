@@ -160,12 +160,11 @@ const Discover = () => {
           </div>
         </div>
       </div>
-      {/* <MusicPlayer></MusicPlayer> */}
-      {activeSong?.title && (
+      {/* {activeSong?.title && (
         <div className="mt-7 drop-shadow-md w-full h-28  flex animate-slideup bg-white backdrop-blur-lg rounded-3xl ">
           <MusicPlayer />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
