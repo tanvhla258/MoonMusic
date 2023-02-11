@@ -25,6 +25,7 @@ import {
   FcLike,
   FcGlobe,
 } from "react-icons/fc";
+import { logo } from "../assets";
 export const shortcutIcons = [
   <FcMusic />,
   <FcGlobe />,
@@ -47,7 +48,7 @@ export const shortcutIcons = [
 ];
 const Discover = () => {
   const dispatch = useDispatch();
-  const [listid, setlistid] = useState("genre-global-chart-14");
+  const [listid, setlistid] = useState("genre-global-chart-15");
   const { data: chartData, isFetching: isFetchingChart } =
     useGetChartListsQuery();
 
@@ -144,7 +145,7 @@ const Discover = () => {
             </div>
             <span className="w-2/12"></span>
           </div>
-          <div className="overflow-y-auto	h-[180px] hide-scrollbar overflow-x-hidden">
+          <div className="overflow-y-auto	h-[280px] hide-scrollbar overflow-x-hidden">
             {data?.tracks.map((song, i) => {
               return (
                 <SongCard
