@@ -31,8 +31,24 @@ const shortcutIcons = [
 ];
 const TopChartsCard = ({ song, i }) => {
   return (
-    <div key={i} className="w-full flex items-center">
-      {song.title}
+    <div key={i} className="w-full gap-2 flex items-center">
+      <span>{i + 1}.</span>
+      <img
+        src={song?.images?.coverart}
+        alt="top chart"
+        className="w-10 h-10 rounded-lg"
+      />
+      <div className="flex truncate w-3/4 flex-col ">
+        <Link to={`/songs/${song?.hub?.actions?.[0].id}`}>
+          <h3 className=" text-slate-800 text-sm cursor-pointer font-semibold ">
+            {song?.title}
+          </h3>
+        </Link>
+        <Link to={`/artists/${song?.artists?.[0].adamid}`}>
+          <h3 className="text-sm text-slate-400 ">{song.subtitle}</h3>
+        </Link>
+      </div>
+      <div></div>
     </div>
   );
 };
@@ -60,12 +76,10 @@ const TopPlay = ({ getList }) => {
   console.log(topPlayData);
   let topPlays = topPlayData?.tracks.slice(0, 5);
 
-  console.log(artData);
-
   const art = artData?.data[0];
 
   return (
-    <div className="flex px-6 gap-6 flex-col">
+    <div className="flex py-4 pl-6 gap-6 flex-col">
       <div className="flex items-center justify-between">
         <h1 className="text-slate-900 text-2xl font-semibold">Top Chart</h1>
         <Link to="/top-charts">
@@ -74,7 +88,7 @@ const TopPlay = ({ getList }) => {
           </span>
         </Link>
       </div>
-      <div>
+      <div className="gap-2 flex flex-col">
         {topPlays?.map((song, i) => {
           return <TopChartsCard song={song} i={i} />;
         })}

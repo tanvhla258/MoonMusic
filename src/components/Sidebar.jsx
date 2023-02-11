@@ -26,7 +26,7 @@ const NavLinks = ({ handleClick }) => (
 );
 const Sidebar = () => {
   return (
-    <div className=" flex flex-col bg-white w-1/5 h-screen pt-8 px-5 gap-8">
+    <div className=" flex flex-col bg-white  h-screen pt-8 px-5 gap-8">
       <div className="flex justify-between items-center">
         <div className=" flex gap-2">
           <span className="h-3 w-3 inline-block rounded-full bg-red"></span>

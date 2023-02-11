@@ -59,7 +59,6 @@ const Discover = () => {
 
   function getList(ListId) {
     setlistid(ListId);
-    dispatch(playPause(true));
   }
   const { data, isFetching, error } = useGetTopChartsQuery(listid);
   console.log(data);
@@ -67,7 +66,7 @@ const Discover = () => {
   if (error) return <Error />;
 
   return (
-    <div className="flex w-[700px] flex-col ">
+    <div className="flex  flex-col ">
       <div className="w-full flex justify-between items-center mt-4 mb-5 sm:flex-row">
         <div className="w-full">
           <span className="text-slate-400 text-sm w-full  flex gap-1 items-center">
@@ -115,7 +114,7 @@ const Discover = () => {
           {chartData?.global.genres.slice(2).map((genres, i) => {
             return (
               <div
-                className="px-4 hover:cursor-pointer smooth-transition hover:drop-shadow-md py-2 gap-1 w-30  h-10 font-medium flex items-center  truncate rounded-3xl bg-white cursor-pointer"
+                className="px-4 p hover:cursor-pointer smooth-transition hover:drop-shadow-md py-2 gap-1 w-30  h-10 font-medium flex items-center  truncate rounded-3xl bg-white cursor-pointer"
                 onClick={() => {
                   getList(genres.listid);
                 }}

@@ -17,10 +17,12 @@ const App = () => {
 
   return (
     <div className="relative flex font-mono ">
-      <Sidebar />
-      <div className="flex-1  flex flex-col bg-gray">
+      <div className="w-2/12">
+        <Sidebar />
+      </div>
+      <div className="flex-1 w-10/12  flex flex-col bg-gray">
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
-          <div className=" h-fit w-full  ">
+          <div className=" h-fit  w-full ">
             <div className="w-full">
               <Searchbar />
             </div>
@@ -34,7 +36,7 @@ const App = () => {
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
           </div>
-          <div className="xl:sticky relative top-0 h-fit">
+          <div className="xl:sticky relative  top-0 h-fit">
             <TopPlay />
           </div>
         </div>

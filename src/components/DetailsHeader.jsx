@@ -4,7 +4,7 @@ import Loader from "./Loader";
 
 const DetailsHeader = ({ artistId, artistData, songData }) => {
   const renderArtistData = artistData?.attributes;
-
+  console.log(renderArtistData);
   console.log(songData);
 
   return (
@@ -28,7 +28,7 @@ const DetailsHeader = ({ artistId, artistData, songData }) => {
             <h1 className="text-lg font-semibold">
               {songData?.attributes?.name}
             </h1>
-            <Link to={`/artist/${songData?.relationships.artists.data[0].id}`}>
+            <Link to={`/artists/${songData?.relationships.artists.data[0].id}`}>
               <span className="text-slate-600 hover:underline smooth-transition border-1">
                 {songData?.attributes?.artistName}
               </span>

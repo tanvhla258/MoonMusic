@@ -1,7 +1,7 @@
 import { FiSearch } from "react-icons/fi";
 
 const Searchbar = () => (
-  <div className="bg-white mt-2 rounded-3xl">
+  <div className="bg-white mr-8 mt-2 rounded-3xl">
     <form
       autoComplete="off"
       className=" py-1 text-slate-400 focus-within:text-slate-600"
