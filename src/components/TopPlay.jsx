@@ -5,6 +5,12 @@ import {
 import Loader from "./Loader";
 import { HiSun } from "react-icons/hi";
 import { Artist } from "./Artist";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import PlayPause from "./PlayPause.jsx";
+import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 import {
   FcMusic,
   FcRating,
@@ -13,6 +19,7 @@ import {
   FcLike,
   FcGlobe,
 } from "react-icons/fc";
+import { BiChevronRight } from "react-icons/bi";
 import { FiPlusSquare } from "react-icons/fi";
 const shortcutIcons = [
   <FcMusic />,
@@ -22,23 +29,76 @@ const shortcutIcons = [
   <FcLike />,
   <FcRating />,
 ];
+const TopChartsCard = ({ song, i }) => {
+  return (
+    <div key={i} className="w-full gap-2 flex items-center">
+      <span>{i + 1}.</span>
+      <img
+        src={song?.images?.coverart}
+        alt="top chart"
+        className="w-10 h-10 rounded-lg"
+      />
+      <div className="flex truncate w-3/4 flex-col ">
+        <Link to={`/songs/${song?.hub?.actions?.[0].id}`}>
+          <h3 className=" text-slate-800 text-sm cursor-pointer font-semibold ">
+            {song?.title}
+          </h3>
+        </Link>
+        <Link to={`/artists/${song?.artists?.[0].adamid}`}>
+          <h3 className="text-sm text-slate-400 ">{song.subtitle}</h3>
+        </Link>
+      </div>
+      <div></div>
+    </div>
+  );
+};
 
 const TopPlay = ({ getList }) => {
+  const dispatch = useDispatch();
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+  const { data: topPlayData, isFetchingTopPlay } = useGetTopChartsQuery(
+    "genre-country-chart-DE-1"
+  );
+  //Fetch artist
   const { data: artData, isFetching: isFetchingArt } =
     useGetArtistQuery(73406786);
 
-  if (isFetchingArt) return <Loader />;
-  console.log(artData);
+  if (isFetchingArt || isFetchingTopPlay) return <Loader />;
+
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, data, index }));
+    dispatch(playPause(true));
+  };
+
+  console.log(topPlayData);
+  let topPlays = topPlayData?.tracks.slice(0, 5);
+
   const art = artData?.data[0];
 
   return (
-    <div className="flex px-6 gap-6 flex-col">
+    <div className="flex py-4 pl-6 gap-6 flex-col">
+      <div className="flex items-center justify-between">
+        <h1 className="text-slate-900 text-2xl font-semibold">Top Chart</h1>
+        <Link to="/top-charts">
+          <span className="text-slate-400 text-sm leading-4 items-center flex">
+            More <BiChevronRight className="inline-block" size={20} />
+          </span>
+        </Link>
+      </div>
+      <div className="gap-2 flex flex-col">
+        {topPlays?.map((song, i) => {
+          return <TopChartsCard song={song} i={i} />;
+        })}
+      </div>
       <h1 className="text-slate-900 text-2xl font-semibold">Fav Artists</h1>
       <div className="">
         <div className="flex hover:cursor-pointer smooth-transition hover:drop-shadow-xl  flex-col items-center  w-[240px] p-4 h-48  rounded-2xl bg-white">
           <div className="h-[70%]">
             <img
-              src={art?.attributes?.artwork.url
+              src={art?.attributes?.artwork?.url
                 .replace("{w}", "200")
                 .replace("{h}", "180")}
               alt=""

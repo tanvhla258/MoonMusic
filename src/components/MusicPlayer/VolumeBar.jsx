@@ -31,7 +31,7 @@ const VolumeBar = ({ value, min, max, onChange, setVolume }) => (
       min={min}
       max={max}
       onChange={onChange}
-      className="2xl:w-40 lg:w-20 md:w-20 h-1 ml-2"
+      className="2xl:w-40 lg:w-32 md:w-32 h-1 ml-2"
     />
   </div>
 );

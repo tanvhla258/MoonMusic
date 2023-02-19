@@ -25,6 +25,7 @@ import {
   FcLike,
   FcGlobe,
 } from "react-icons/fc";
+import { logo } from "../assets";
 export const shortcutIcons = [
   <FcMusic />,
   <FcGlobe />,
@@ -47,7 +48,7 @@ export const shortcutIcons = [
 ];
 const Discover = () => {
   const dispatch = useDispatch();
-  const [listid, setlistid] = useState("genre-global-chart-14");
+  const [listid, setlistid] = useState("genre-global-chart-15");
   const { data: chartData, isFetching: isFetchingChart } =
     useGetChartListsQuery();
 
@@ -58,7 +59,6 @@ const Discover = () => {
 
   function getList(ListId) {
     setlistid(ListId);
-    dispatch(playPause(true));
   }
   const { data, isFetching, error } = useGetTopChartsQuery(listid);
   console.log(data);
@@ -66,7 +66,7 @@ const Discover = () => {
   if (error) return <Error />;
 
   return (
-    <div className="flex w-[700px] flex-col ">
+    <div className="flex  flex-col ">
       <div className="w-full flex justify-between items-center mt-4 mb-5 sm:flex-row">
         <div className="w-full">
           <span className="text-slate-400 text-sm w-full  flex gap-1 items-center">
@@ -75,9 +75,6 @@ const Discover = () => {
           </span>
           <div className="flex justify-between items-end">
             <h1 className="text-slate-900 text-3xl font-semibold">Trending</h1>
-            <span className="text-slate-400 text-sm leading-4 items-center flex">
-              More <BiChevronRight className="inline-block" size={20} />
-            </span>
           </div>
         </div>
       </div>
@@ -114,10 +111,10 @@ const Discover = () => {
           </span>
         </div>
         <div className="flex justify-end pr-2 w-[45%] gap-3 h-40 overflow-scroll hide-scrollbar flex-wrap">
-          {chartData?.global.genres.map((genres, i) => {
+          {chartData?.global.genres.slice(2).map((genres, i) => {
             return (
               <div
-                className="px-4 hover:cursor-pointer smooth-transition hover:drop-shadow-md py-2 gap-1 w-30  h-10 font-medium flex items-center  truncate rounded-3xl bg-white cursor-pointer"
+                className="px-4 p hover:cursor-pointer smooth-transition hover:drop-shadow-md py-2 gap-1 w-30  h-10 font-medium flex items-center  truncate rounded-3xl bg-white cursor-pointer"
                 onClick={() => {
                   getList(genres.listid);
                 }}
@@ -138,13 +135,16 @@ const Discover = () => {
             Show All <BiChevronRight className="inline-block" size={20} />
           </span>
         </div>
-        <div className="relative  mt-2 h-48 ">
-          <div className="flex my-1 px-2  gap-16  ">
-            <span className="text-sm w-1/6 text-slate-400 ">#</span>
-            <span className="text-sm w-1/3 text-slate-400 ">Title</span>
-            <span className="text-sm w-1/2 text-slate-400 ">Artist</span>
+        <div className="w-full">
+          <div className="flex w-full items-center">
+            <div className="flex w-10/12  relative my-2 gap-8 px-2 pt-1 font-bold text">
+              <span className="w-2/12 text-slate-600 ">#</span>
+              <span className="w-4/12 text-slate-600 truncate ">Title</span>
+              <span className="w-1/2 text-slate-600 truncate ">Artist</span>
+            </div>
+            <span className="w-2/12"></span>
           </div>
-          <div className="overflow-y-auto	h-[180px] hide-scrollbar overflow-x-hidden">
+          <div className="overflow-y-auto	h-[280px] hide-scrollbar overflow-x-hidden">
             {data?.tracks.map((song, i) => {
               return (
                 <SongCard
@@ -160,12 +160,11 @@ const Discover = () => {
           </div>
         </div>
       </div>
-      {/* <MusicPlayer></MusicPlayer> */}
-      {activeSong?.title && (
+      {/* {activeSong?.title && (
         <div className="mt-7 drop-shadow-md w-full h-28  flex animate-slideup bg-white backdrop-blur-lg rounded-3xl ">
           <MusicPlayer />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
