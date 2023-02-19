@@ -36,16 +36,18 @@ const TopChartsCard = ({ song, i }) => {
       <img
         src={song?.images?.coverart}
         alt="top chart"
-        className="w-10 h-10 rounded-lg"
+        className="w-10 h-10 rounded-lg hover:scale-105 smooth-transition cursor-pointer"
       />
       <div className="flex truncate w-3/4 flex-col ">
         <Link to={`/songs/${song?.hub?.actions?.[0].id}`}>
-          <h3 className=" text-slate-800 text-sm cursor-pointer font-semibold ">
+          <h3 className=" text-slate-800 text-sm cursor-pointer font-semibold hover:underline smooth-transition ">
             {song?.title}
           </h3>
         </Link>
         <Link to={`/artists/${song?.artists?.[0].adamid}`}>
-          <h3 className="text-sm text-slate-400 ">{song.subtitle}</h3>
+          <h3 className="text-sm text-slate-400 hover:text-slate-800">
+            {song.subtitle}
+          </h3>
         </Link>
       </div>
       <div></div>

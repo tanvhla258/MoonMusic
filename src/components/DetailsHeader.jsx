@@ -21,7 +21,7 @@ const DetailsHeader = ({ artistId, artistData, songData }) => {
                     .replace("{w}", "500")
                     .replace("{h}", "500")
             }
-            alt="No background"
+            alt=""
             className="sm:w-48 w-28 sm:h-48 h-28 rounded-full object-cover border-2 shadow-xl"
           />
           <div className="flex flex-col gap-2 ml-2">
