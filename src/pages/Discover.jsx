@@ -150,7 +150,7 @@ const Discover = () => {
                 <SongCard
                   song={song}
                   index={i}
-                  key={i}
+                  key={data?.tracks.key}
                   activeSong={activeSong}
                   isPlaying={isPlaying}
                   data={data?.tracks}

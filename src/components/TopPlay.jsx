@@ -1,11 +1,5 @@
-import {
-  useGetChartListsQuery,
-  useGetArtistQuery,
-} from "../redux/services/shazamCore";
+import { useGetArtistQuery } from "../redux/services/shazamCore";
 import Loader from "./Loader";
-import { HiSun } from "react-icons/hi";
-import { Artist } from "./Artist";
-import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PlayPause from "./PlayPause.jsx";
@@ -19,6 +13,7 @@ import {
   FcLike,
   FcGlobe,
 } from "react-icons/fc";
+import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 import { BiChevronRight } from "react-icons/bi";
 import { FiPlusSquare } from "react-icons/fi";
 const shortcutIcons = [
@@ -29,9 +24,19 @@ const shortcutIcons = [
   <FcLike />,
   <FcRating />,
 ];
-const TopChartsCard = ({ song, i }) => {
+const TopChartsCard = ({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  handlePauseClick,
+  handlePlayClick,
+}) => {
   return (
-    <div key={i} className="w-full gap-2 flex items-center">
+    <div
+      key={i}
+      className="w-full gap-2 flex items-center hover:bg-slate-300 cursor-pointer hover:rounded smooth-transition py-1"
+    >
       <span>{i + 1}.</span>
       <img
         src={song?.images?.coverart}
@@ -50,7 +55,20 @@ const TopChartsCard = ({ song, i }) => {
           </h3>
         </Link>
       </div>
-      <div></div>
+      <div className="w-full h-10">
+        <PlayPause
+          song={song}
+          isPlaying={isPlaying}
+          activeSong={activeSong}
+          handlePause={handlePauseClick}
+          handlePlay={handlePlayClick}
+        />
+      </div>
+      {isPlaying && activeSong?.title === song.title ? (
+        <BsFillPauseFill size={40} className="" />
+      ) : (
+        <BsFillPlayFill size={40} className="" />
+      )}
     </div>
   );
 };
@@ -61,6 +79,8 @@ const TopPlay = ({ getList }) => {
   const { data: topPlayData, isFetchingTopPlay } = useGetTopChartsQuery(
     "genre-country-chart-DE-1"
   );
+  let topPlays = topPlayData?.tracks.slice(0, 5);
+  const track = topPlayData?.tracks;
   //Fetch artist
   const { data: artData, isFetching: isFetchingArt } =
     useGetArtistQuery(73406786);
@@ -70,13 +90,12 @@ const TopPlay = ({ getList }) => {
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
-  const handlePlayClick = () => {
-    dispatch(setActiveSong({ song, data, index }));
+  const handlePlayClick = (song, i) => {
+    dispatch(setActiveSong({ song, data: track, i }));
     dispatch(playPause(true));
   };
 
   console.log(topPlayData);
-  let topPlays = topPlayData?.tracks.slice(0, 5);
 
   const art = artData?.data[0];
 
@@ -92,7 +111,16 @@ const TopPlay = ({ getList }) => {
       </div>
       <div className="gap-2 flex flex-col">
         {topPlays?.map((song, i) => {
-          return <TopChartsCard song={song} i={i} />;
+          return (
+            <TopChartsCard
+              song={song}
+              i={i}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              handlePauseClick={handlePauseClick}
+              handlePlayClick={() => handlePlayClick(song, i)}
+            />
+          );
         })}
       </div>
       <h1 className="text-slate-900 text-2xl font-semibold">Fav Artists</h1>
