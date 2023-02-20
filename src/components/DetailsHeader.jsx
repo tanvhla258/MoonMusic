@@ -26,11 +26,11 @@ const DetailsHeader = ({ artistId, artistData, songData }) => {
           />
           <div className="flex flex-col gap-2 ml-2">
             <h1 className="text-lg font-semibold">
-              {songData?.attributes?.name}
+              {artistId ? renderArtistData.name : songData?.attributes?.name}
             </h1>
             <Link to={`/artists/${songData?.relationships.artists.data[0].id}`}>
               <span className="text-slate-600 hover:underline smooth-transition border-1">
-                {songData?.attributes?.artistName}
+                {artistId ? renderArtistData.name : songData?.attributes?.name}
               </span>
             </Link>
           </div>

@@ -51,7 +51,7 @@ const TopChartsCard = ({
         </Link>
         <Link to={`/artists/${song?.artists?.[0].adamid}`}>
           <h3 className="text-sm text-slate-400 hover:text-slate-800">
-            {song.subtitle}
+            {song?.subtitle}
           </h3>
         </Link>
       </div>

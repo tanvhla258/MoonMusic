@@ -11,13 +11,12 @@ import { logo } from "../assets";
 const SongDetails = () => {
   const dispatch = useDispatch();
   const { songid } = useParams();
+  console.log(songid);
   const { activeSong, iaPlaying } = useSelector((state) => state.player);
   const { data: songData, isFetching: isFetchingDetails } =
     useGetSongDetailsV2Query(songid);
 
-  const { data: realatedSongData, isFetching: isFetchingRelatedSong } =
-    useGetSongRelatedQuery(songid);
-  if (isFetchingDetails || isFetchingRelatedSong) return <Loader />;
+  if (isFetchingDetails) return <Loader title="Search song detail..." />;
   console.log(songData);
   return (
     <div>
