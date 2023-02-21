@@ -4,20 +4,23 @@ import { DetailsHeader, Error, Loader, RelatedSongs } from "../components";
 import { setActiveSong, playPause } from "../redux/features/playerSlice";
 import {
   useGetSongDetailsV2Query,
-  useGetSongRelatedQuery,
+  useGetSongRecommendedQuery,
 } from "../redux/services/shazamCore";
 import { logo } from "../assets";
 
 const SongDetails = () => {
   const dispatch = useDispatch();
   const { songid } = useParams();
-  console.log(songid);
   const { activeSong, iaPlaying } = useSelector((state) => state.player);
   const { data: songData, isFetching: isFetchingDetails } =
     useGetSongDetailsV2Query(songid);
 
-  if (isFetchingDetails) return <Loader title="Search song detail..." />;
-  console.log(songData);
+  const { data: recommendedData, isFetching: isFetchingRecommened } =
+    useGetSongRecommendedQuery(songid);
+
+  if (isFetchingDetails || isFetchingRecommened)
+    return <Loader title="Search song detail..." />;
+  console.log(recommendedData);
   return (
     <div>
       <div className="flex flex-col">
@@ -28,7 +31,7 @@ const SongDetails = () => {
           <p>Sorry! No lyrics found</p>
         </div>
 
-        <div></div>
+        <div>{}</div>
       </div>
     </div>
   );

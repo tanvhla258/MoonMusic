@@ -19,8 +19,18 @@ const SongCard = ({ index, isPlaying, activeSong, song, data }) => {
         <span className="w-2/12 text-slate-600 ">
           {index < 9 ? `0${index + 1}` : index + 1}
         </span>
-        <span className="w-4/12 text-slate-600 truncate ">{song.title}</span>
-        <span className="w-1/2 text-slate-600 truncate ">{song.subtitle}</span>
+        <Link
+          to={`/song/${song.id}`}
+          className="w-4/12 text-slate-600 hover:underline truncate"
+        >
+          <span>{song.title}</span>
+        </Link>
+        <Link
+          to={`/artist/${1234} `}
+          className="w-4/12 text-slate-600 hover:underline truncate"
+        >
+          <span>{song.subtitle}</span>
+        </Link>
         <PlayPause
           isPlaying={isPlaying}
           activeSong={activeSong}
