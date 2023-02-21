@@ -46,7 +46,10 @@ const SongCard = ({
           handlePlay={handlePlayClick}
         />
       </div>
-      <Link to={`/songs/${song?.hub?.actions?.[0].id}`} className="w-2/12">
+      <Link
+        to={`/songs/${song?.hub?.actions?.[0].id}/${song?.key}`}
+        className="w-2/12"
+      >
         <BsInfoCircle
           size={18}
           className="w-[105%] smooth-transition hover:scale-105"

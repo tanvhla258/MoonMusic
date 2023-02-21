@@ -30,7 +30,7 @@ const App = () => {
               <Route path="/top-charts" element={<TopCharts />} />
               <Route path="/around-you" element={<AroundYou />} />
               <Route path="/artists/:artistId" element={<ArtistDetails />} />
-              <Route path="/songs/:songid" element={<SongDetails />} />
+              <Route path="/songs/:songid/:songKey" element={<SongDetails />} />
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
           </div>

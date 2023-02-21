@@ -19,7 +19,7 @@ const Searchbar = () => (
           placeholder="Search for artists, songs and...."
           value=""
           onChange={() => {}}
-          className="flex-1 bg-white outline-none rounded-3xl text-sm placeholder:text-slate-200 text-black px-4 py-1"
+          className="flex-1 bg-white outline-none rounded-3xl text-sm placeholder:text-slate-400 text-black px-4 py-1"
         />
       </div>
     </form>

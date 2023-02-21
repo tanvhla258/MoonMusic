@@ -44,7 +44,7 @@ const TopChartsCard = ({
         className="w-10 h-10 rounded-lg hover:scale-105 smooth-transition cursor-pointer"
       />
       <div className="flex truncate w-3/4 flex-col ">
-        <Link to={`/songs/${song?.hub?.actions?.[0].id}`}>
+        <Link to={`/songs/${song?.hub?.actions?.[0].id}/${song?.key}`}>
           <h3 className=" text-slate-800 text-sm cursor-pointer font-semibold hover:underline smooth-transition ">
             {song?.title}
           </h3>

@@ -5,18 +5,19 @@ import { setActiveSong, playPause } from "../redux/features/playerSlice";
 import {
   useGetSongDetailsV2Query,
   useGetSongRecommendedQuery,
+  useGetV2ToV1Query,
 } from "../redux/services/shazamCore";
-import { logo } from "../assets";
 
 const SongDetails = () => {
   const dispatch = useDispatch();
-  const { songid } = useParams();
+  const { songid, songKey } = useParams();
   const { activeSong, iaPlaying } = useSelector((state) => state.player);
+  console.log(songKey);
   const { data: songData, isFetching: isFetchingDetails } =
     useGetSongDetailsV2Query(songid);
 
   const { data: recommendedData, isFetching: isFetchingRecommened } =
-    useGetSongRecommendedQuery(songid);
+    useGetSongRecommendedQuery(songKey);
 
   if (isFetchingDetails || isFetchingRecommened)
     return <Loader title="Search song detail..." />;
