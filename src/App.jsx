@@ -17,9 +17,7 @@ const App = () => {
 
   return (
     <div className="relative flex font-mono ">
-      <div className="w-2/12">
-        <Sidebar />
-      </div>
+      <Sidebar />
       <div className="flex-1 w-10/12  flex flex-col bg-gray">
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
           <div className=" h-fit  w-full ">
