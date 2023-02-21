@@ -3,7 +3,14 @@ import { useDispatch } from "react-redux";
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { BsInfoCircle } from "react-icons/bs";
-const SongCard = ({ index, isPlaying, activeSong, song, data }) => {
+const SongCard = ({
+  index,
+  isPlaying,
+  activeSong,
+  song,
+  data,
+  isBtn = false,
+}) => {
   //const { data, isFetching, error } = useGetSongDetailsQuery(songKey);
   const dispatch = useDispatch();
   const handlePauseClick = () => {
@@ -13,7 +20,7 @@ const SongCard = ({ index, isPlaying, activeSong, song, data }) => {
     dispatch(setActiveSong({ song, data, index }));
     dispatch(playPause(true));
   };
-  return (
+  return !isBtn ? (
     <div className="flex w-full items-center">
       <div className="flex w-10/12  relative my-2 gap-8 px-2 hover:cursor-pointer py-1 hover:bg-white rounded-md hover:drop-shadow-md smooth-transition">
         <span className="w-2/12 text-slate-600 ">
@@ -45,6 +52,16 @@ const SongCard = ({ index, isPlaying, activeSong, song, data }) => {
           className="w-[105%] smooth-transition hover:scale-105"
         />
       </Link>
+    </div>
+  ) : (
+    <div className=" absolute w-full h-full top-0 left-0">
+      <PlayPause
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+        song={song}
+        handlePause={handlePauseClick}
+        handlePlay={handlePlayClick}
+      />
     </div>
   );
 };

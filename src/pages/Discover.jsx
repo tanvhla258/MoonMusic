@@ -14,7 +14,7 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Scrollbar, Mousewheel } from "swiper";
-
+import PlayPause from "../components/PlayPause";
 import "swiper/css/free-mode";
 import "swiper/css/scrollbar";
 import {
@@ -96,8 +96,17 @@ const Discover = () => {
           <h1 className=" z-1 top-[70px] left-4  absolute text-slate-900 text-2xl font-semibold">
             Of The World
           </h1>
-          <button className="z-1 text-white font-semibold bottom-3 left-4 absolute bg-black border-2 border-black px-5 py-1 rounded-3xl">
-            PLAY
+          <button className="z-1 text-white hover:border-slate-400 hover:border-3  smooth-transition font-semibold bottom-3 left-4 absolute bg-black border-2 border-black px-5 py-1 rounded-3xl">
+            Play
+            <SongCard
+              song={data?.tracks[0]}
+              index={0}
+              key={data?.tracks.key}
+              activeSong={activeSong}
+              isPlaying={isPlaying}
+              data={data?.tracks}
+              isBtn={true}
+            ></SongCard>
           </button>
           <button className="z-1 text-black font-semibold bottom-3 left-28 absolute bg-transparent border-2 border-black px-5 py-1 rounded-3xl">
             FOLLOW
