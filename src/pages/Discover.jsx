@@ -64,7 +64,6 @@ const Discover = () => {
   console.log(data);
   if (isFetching) return <Loader></Loader>;
   if (error) return <Error />;
-
   return (
     <div className="flex  flex-col ">
       <div className="w-full flex justify-between items-center mt-4 mb-5 sm:flex-row">

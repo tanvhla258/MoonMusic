@@ -24,7 +24,7 @@ const shortcutIcons = [
   <FcLike />,
   <FcRating />,
 ];
-const TopChartsCard = ({
+export const TopChartsCard = ({
   song,
   i,
   isPlaying,
@@ -37,7 +37,10 @@ const TopChartsCard = ({
       key={i}
       className="w-full gap-2 flex items-center hover:bg-slate-300 cursor-pointer hover:rounded smooth-transition py-1"
     >
-      <span>{i + 1}.</span>
+      <span>
+        {i <= 8 ? "0" : ""}
+        {i + 1}.
+      </span>
       <img
         src={song?.images?.coverart}
         alt="top chart"
@@ -98,7 +101,7 @@ const TopPlay = ({ getList }) => {
   console.log(topPlayData);
 
   const art = artData?.data[0];
-
+  console.log(art);
   return (
     <div className="flex py-4 pl-6 gap-6 flex-col">
       <div className="flex items-center justify-between">
@@ -124,7 +127,7 @@ const TopPlay = ({ getList }) => {
         })}
       </div>
       <h1 className="text-slate-900 text-2xl font-semibold">Fav Artists</h1>
-      <div className="">
+      <Link to={`/artists/${art.id}`}>
         <div className="flex hover:cursor-pointer smooth-transition hover:drop-shadow-xl  flex-col items-center  w-[240px] p-4 h-48  rounded-2xl bg-white">
           <div className="h-[70%]">
             <img
@@ -143,7 +146,7 @@ const TopPlay = ({ getList }) => {
             <FiPlusSquare size={20} />
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

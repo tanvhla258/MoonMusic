@@ -41,7 +41,7 @@ const Sidebar = () => {
   };
   return (
     <div
-      className={`smooth-transition flex flex-col bg-white  h-screen pt-8 px-5 gap-8 ${
+      className={`smooth-transition  flex flex-col bg-white  h-screen pt-8 px-5 gap-8 ${
         isShrink ? `w-1/12` : `w-2/12`
       }`}
     >
@@ -70,7 +70,7 @@ const Sidebar = () => {
       </div>
       <div className="flex items-center gap-2">
         <GiMusicSpell className=" text-[#EFB35F] " size={24} />
-        <span className={isShrink ? "hidden" : "text-2xl "}>
+        <span className={`${isShrink ? "hidden" : "text-2xl "} `}>
           <span className="text-2xl text-[#EFB35F]">Moon</span>Music
         </span>
       </div>

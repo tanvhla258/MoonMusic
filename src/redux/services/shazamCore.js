@@ -41,6 +41,14 @@ export const shazamCoreAPI = createApi({
       query: (songId) =>
         `/songs/list-recommendations?key=${songId}&locale=en-US`,
     }),
+    //getSongsByCountry: builder.query({query:(countryCode)=>``})
+    getSongBySearch: builder.query({
+      query: (searchTerm) =>
+        `/search?term=${searchTerm.replace(
+          " ",
+          "%"
+        )}&locale=en-US&offset=0&limit=5`,
+    }),
   }),
 });
 
@@ -53,4 +61,5 @@ export const {
   useGetArtistQuery,
   useGetSongRelatedQuery,
   useGetSongRecommendedQuery,
+  useGetSongBySearchQuery,
 } = shazamCoreAPI;
