@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { Loader, Error, SongCard } from "../components";
-import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { useGetSongBySearchQuery } from "../redux/services/shazamCore";
 import { useSelector } from "react-redux";
 const Search = () => {
@@ -17,18 +16,16 @@ const Search = () => {
           Search results for {searchTerm}
         </h2>
         <div className=" sm:justify-start gap-8 h-[280px] ">
-          {songs?.map((song, i) => {
-            return (
-              <SongCard
-                song={song}
-                index={i}
-                key={song?.key}
-                activeSong={activeSong}
-                isPlaying={isPlaying}
-                data={song}
-              ></SongCard>
-            );
-          })}
+          {songs?.map((song, i) => (
+            <SongCard
+              song={song}
+              index={i}
+              key={song?.key}
+              activeSong={activeSong}
+              isPlaying={isPlaying}
+              data={song}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@ import { links } from "../assets/constants";
 import { useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 
-import { logo } from "../assets";
 import { NavLink } from "react-router-dom";
 import { GiMusicSpell } from "react-icons/gi";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";

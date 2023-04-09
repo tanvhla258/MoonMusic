@@ -111,10 +111,10 @@ const Discover = () => {
             FOLLOW
           </button>
 
-          <span className="text-slate-300 bottom-6 right-2 z-1 absolute text-sm leading-4">
+          <span className="text-slate-300 bottom-6 right-2 z-1 absolute text-sm leading-4 md:block hidden">
             Monthly Listener
           </span>
-          <span className="text-slate-100 bottom-2 right-2 z-1 absolute  leading-4">
+          <span className="text-slate-100 bottom-2 right-2 z-1 absolute md:block hidden leading-4">
             32000
           </span>
         </div>
