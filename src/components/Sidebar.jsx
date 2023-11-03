@@ -17,8 +17,10 @@ const NavLinks = () => {
               key={item.name}
               to={item.to}
               className={`${
-                item.to === activeLink ? "bg-black text-white" : ""
-              } flex cursor-pointer self-center w-fit md:w-full flex-row text-slate-700 py-4 text-base smooth-transition   hover:scale-105 items-center  rounded-2xl`}
+                item.to === activeLink
+                  ? "bg-black text-white"
+                  : "text-slate-700"
+              } flex cursor-pointer self-center w-fit md:w-full flex-row  py-4 text-base smooth-transition   hover:scale-105 items-center  rounded-2xl`}
               onClick={() => {
                 setActiveLink((current) => item.to);
               }}
