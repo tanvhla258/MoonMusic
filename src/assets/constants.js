@@ -5,7 +5,6 @@ import {
   HiOutlineUserGroup,
 } from "react-icons/hi";
 import { GiEarthAsiaOceania } from "react-icons/gi";
-import { FiPlusSquare } from "react-icons/fi";
 
 export const genres = [
   { title: "Pop", value: "POP" },

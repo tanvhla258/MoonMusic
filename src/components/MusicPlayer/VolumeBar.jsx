@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 
 const VolumeBar = ({ value, min, max, onChange, setVolume }) => (
-  <div className="hidden lg:flex flex-1 items-center justify-end">
+  <div className="hidden lg:flex  items-center justify-end">
     {value <= 1 && value > 0.5 && (
       <BsFillVolumeUpFill
         size={25}

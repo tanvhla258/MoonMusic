@@ -68,9 +68,13 @@ export const TopChartsCard = ({
         />
       </div>
       {isPlaying && activeSong?.title === song.title ? (
-        <BsFillPauseFill size={40} className="" />
+        <div className="w-18">
+          <BsFillPauseFill size={18} className="" />
+        </div>
       ) : (
-        <BsFillPlayFill size={40} className="" />
+        <div className="w-18">
+          <BsFillPlayFill size={18} className="" />
+        </div>
       )}
     </div>
   );
